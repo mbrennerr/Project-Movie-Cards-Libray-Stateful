@@ -16,7 +16,7 @@ class SelectBox extends Component {
           Filtrar por gênero
           <select
             name=""
-            id=""
+            id="selectGenreBox"
             data-testid="select-input"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
