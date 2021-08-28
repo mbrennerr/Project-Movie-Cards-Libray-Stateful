@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { string, func, bool } from 'prop-types';
 
 class SearchBar extends Component {
   render() {
@@ -10,14 +11,21 @@ class SearchBar extends Component {
       selectedGenre,
       onSelectedGenreChange,
     } = this.props;
+
     return (
       <form action="" data-testid="search-bar-form">
         <label
-          htmlFor="lablink"
+          htmlFor="lab"
           data-testid="text-input-label"
         >
           Inclui o texto
-          <input type="text" id="lablink" data-testid="text-input" value={ searchText } onChange={ onSearchTextChange } />
+          <input
+            id="lab"
+            type="text"
+            data-testid="text-input"
+            value={ searchText }
+            onChange={ onSearchTextChange }
+          />
         </label>
 
       </form>
@@ -25,5 +33,15 @@ class SearchBar extends Component {
     );
   }
 }
+
+SearchBar.propTypes = {
+  searchText: string.isRequired,
+  onSearchTextChange: func.isRequired,
+  bookmarkedOnly: bool.isRequired,
+  onBookmarkedChange: func.isRequired,
+  selectedGenre: string.isRequired,
+  onSelectedGenreChange: func.isRequired,
+
+};
 
 export default SearchBar;
