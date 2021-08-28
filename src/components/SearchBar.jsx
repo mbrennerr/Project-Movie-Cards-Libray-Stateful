@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { string, func, bool } from 'prop-types';
+import SelectBox from './SelectBox';
 
 class SearchBar extends Component {
   render() {
@@ -13,21 +14,40 @@ class SearchBar extends Component {
     } = this.props;
 
     return (
-      <form action="" data-testid="search-bar-form">
+      <form
+        data-testid="search-bar-form"
+        action=""
+      >
         <label
-          htmlFor="lab"
+          htmlFor="searchBox"
           data-testid="text-input-label"
         >
           Inclui o texto
           <input
-            id="lab"
+            id="searchBox"
             type="text"
             data-testid="text-input"
             value={ searchText }
             onChange={ onSearchTextChange }
           />
         </label>
-
+        <label
+          data-testid="checkbox-input-label"
+          htmlFor="onlyFavorites"
+        >
+          Mostrar somente favoritos
+          <input
+            data-testid="checkbox-input"
+            id="onlyFavorites"
+            type="checkbox"
+            checked={ bookmarkedOnly }
+            onChange={ onBookmarkedChange }
+          />
+        </label>
+        <SelectBox
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ onSelectedGenreChange }
+        />
       </form>
 
     );
