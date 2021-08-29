@@ -5,15 +5,18 @@ import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+    const { movies } = this.props;
+    this.state = { movies };
+  }
+
 onClick = (movieInfo) => {
-  console.log(movieInfo);
+  this.setState((state) => ({ movies: [...state.movies, movieInfo] }));
 }
 
 render() {
-  const { movies } = this.props;
+  const { movies } = this.state;
 
   return (
     <div>
