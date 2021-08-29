@@ -8,18 +8,22 @@ class MovieLibrary extends Component {
   // constructor(props) {
   //   super(props);
   // }
+onClick = (movieInfo) => {
+  console.log(movieInfo);
+}
 
-  render() {
-    const { movies } = this.props;
-    return (
-      <div>
-        <h2> My awesome movie library </h2>
-        <SearchBar />
-        <MovieList movies={ movies } />
-        <AddMovie />
-      </div>
-    );
-  }
+render() {
+  const { movies } = this.props;
+
+  return (
+    <div>
+      <h2> My awesome movie library </h2>
+      <SearchBar />
+      <MovieList movies={ movies } />
+      <AddMovie onClick={ this.onClick } />
+    </div>
+  );
+}
 }
 MovieLibrary.propTypes = {
   movies: arrayOf(Object).isRequired,

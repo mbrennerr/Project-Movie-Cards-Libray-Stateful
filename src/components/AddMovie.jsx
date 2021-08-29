@@ -1,3 +1,4 @@
+import { func } from 'prop-types';
 import React, { Component } from 'react';
 import Input from './Form/Input';
 import TextArea from './Form/TextArea';
@@ -13,6 +14,7 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     };
+    this.basestate = this.state;
   }
 
   handleChange = (e) => {
@@ -59,6 +61,26 @@ class AddMovie extends Component {
     );
   }
 
+  OnclickFunc =(e) => {
+    const { onClick } = this.props;
+    e.preventDefault();
+    onClick(this.state); // Estado Atual do Objeto Movie;
+    this.setState(this.basestate); // Reseta o Estado Atual do Objeto Movie;
+  };
+
+  ButtonAdd = () => (
+    <button
+      data-testid="send-button"
+      type="submit"
+      value="submit"
+      onClick={ this.OnclickFunc }
+    >
+      Adicionar filme
+
+    </button>
+
+  );
+
   render() {
     const { subtitle, title, imagePath, storyline, rating } = this.state;
     return (
@@ -104,9 +126,15 @@ class AddMovie extends Component {
 
         />
         {this.renderGenre()}
+        {this.ButtonAdd()}
+
       </form>
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: func.isRequired,
+};
 
 export default AddMovie;
