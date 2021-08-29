@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { string, func } from 'prop-types';
 
 class TextArea extends Component {
   render() {
@@ -14,7 +15,7 @@ class TextArea extends Component {
           value={ value }
           id={ id }
           name={ id }
-          cols="30"
+          cols="25"
           rows="10"
           onChange={ onChange }
         />
@@ -23,4 +24,11 @@ class TextArea extends Component {
   }
 }
 
+TextArea.propTypes = {
+  id: string.isRequired,
+  value: string.isRequired,
+  dataTestId: string.isRequired,
+  labelText: string.isRequired,
+  onChange: func.isRequired,
+};
 export default TextArea;

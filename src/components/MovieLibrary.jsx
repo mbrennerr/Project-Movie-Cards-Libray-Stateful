@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { arrayOf } from 'prop-types';
-import movies from '../data';
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
@@ -11,6 +10,7 @@ class MovieLibrary extends Component {
   // }
 
   render() {
+    const { movies } = this.props;
     return (
       <div>
         <h2> My awesome movie library </h2>
